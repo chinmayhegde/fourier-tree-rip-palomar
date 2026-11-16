@@ -1,0 +1,132 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: A Quadratic Lower Bound for Fourier RIP with Tree-Structured Sparsity
+  description: Lean 4 formalization of an explicit lower bound for uniformly row-subsampled discrete
+    Fourier transforms acting on canonical binary-heap tree-sparse vectors. With constant distortion,
+    at least half of frequency sequences violate tree-RIP when 20000 m <= k min(k, log_2(N/k)), with
+    an explicit quadratic corollary. The proof uses broom supports, Fejer-kernel concentration, simultaneous
+    Diophantine approximation, and finite counting. A full-DFT isometry theorem checks the normalization
+    and nonvacuity of the definitions.
+  authors:
+  - Chinmay Hegde
+  license: Apache-2.0
+  responsible_maintainers:
+  - Chinmay Hegde
+classification:
+  arxiv:
+  - math.NA
+  - cs.IT
+  msc2020:
+  - 42B05
+  - 94A12
+sources:
+- title: A Quadratic Lower Bound for Fourier RIP with Tree-Structured Sparsity
+  type: unpublished manuscript
+  location: paper/tree_fourier_rip_note.pdf
+  relationship: formalizes
+  note: Five-page manuscript supplied with the Lean development. This repository includes the exact
+    submitted PDF for theorem-statement comparison. The formalization proves explicit constants and
+    a discrete probability/counting version of its main sampled-Fourier result. The PDF has no author
+    line.
+- title: Model-based compressive sensing
+  type: journal article
+  authors:
+  - Richard G. Baraniuk
+  - Volkan Cevher
+  - Marco F. Duarte
+  - Chinmay Hegde
+  relationship: background
+  id: IEEE Transactions on Information Theory 56(4):1982-2001 (2010)
+  note: Background on model-based tree sparsity, not a source of the Fourier obstruction proof.
+related_formalizations: []
+status:
+  scope: Formalizes the broom lower bound, its parameter-optimized Fourier tree-RIP sample lower bound,
+    an explicit quadratic corollary, and full-DFT Parseval nonvacuity. Frequencies are sampled independently
+    uniformly with replacement; the formal statement is a finite cardinality inequality equivalent
+    to failure probability at least 1/2 when N>0. Does not formalize the manuscript's without-replacement
+    extension, its bit-reversed-labeling discussion, its Gaussian-width heuristic, or wavelet-sparse
+    Fourier measurements. The quadratic corollary uses N >= k*2^k rather than the less restrictive
+    ambient dimension scaling discussed in the manuscript. All bounds here use fixed constants 1/4,
+    272, and 20000 rather than abstract universal constants.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Classical.choice
+  - Quot.sound
+  main_results:
+  - declaration: FourierTreeRIP.fourier_tree_rip_lower_bound
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Classical.choice
+    - Quot.sound
+    comparator_config: comparator.json
+  - declaration: FourierTreeRIP.full_dft_isometry
+    file: Solution.lean
+    sorry_count: 0
+    axioms:
+    - propext
+    - Classical.choice
+    - Quot.sound
+    comparator_config: comparator.json
+automation:
+  methods:
+  - method: agent
+    models:
+    - Claude (Anthropic; exact version not recorded)
+    tool_setup: AI-assisted Lean formalization by Claude using Mathlib and the Lean prover; the original
+      mathematical argument was developed with human research involvement. Exact prompting and execution
+      tooling not recorded.
+    prompting_notes: The agent was tasked with formalizing the supplied Fourier tree-RIP broom proof
+      and passing Comparator. Prompt transcript not preserved here.
+  spend_usd: not tracked
+  notes: A Claude coding agent produced the Lean proof, which the owner reported passing Comparator.
+    GPT-6 performed a source-level audit and subsequently prepared Palomar packaging. No independent
+    Lean run or Comparator rerun of this module-system port has been completed as part of the packaging.
+fidelity:
+  divergences: The source states an asymptotic failure-probability theorem. The Lean theorem makes
+    the constants explicit and counts successes among all N^m sampled-frequency tuples (failure probability
+    >= 1/2). The source's N ≳ k 2^(k/2) quadratic corollary is not the exact statement of the separate
+    Lean corollary, which assumes N >= k 2^k; the main Lean theorem still states the more general
+    bound. Additional discussion and variants listed in status.scope are not formalized.
+review:
+  status: AI-assisted source-level audit; independent CI verification pending
+  reviewers:
+  - OpenAI GPT-6 (source-level review; not independent Lean execution)
+  notes: The original proof was reported by the owner as passing Comparator before conversion to the
+    Lean module system. Formal semantic verification of this repackaged commit must be established
+    by its GitHub Actions build and Palomar's own Comparator verification. No claim of human peer
+    review.
+alignment:
+  namespace: FourierTreeRIP
+  statements:
+  - source: 'Proposition 2: broom construction and lower bound'
+    lean: FourierTreeRIP.broom_lower_bound
+    module: Solution
+    status: proved
+    note: Explicit constants; probability >= 1/2 via finite counting.
+  - source: 'Theorem 1: Fourier tree-RIP lower bound'
+    lean: FourierTreeRIP.fourier_tree_rip_lower_bound
+    module: Solution
+    status: proved
+    note: Bound 20000 m <= k min(k, log_2(N/k)), m > 0.
+  - source: 'Corollary 3: quadratic regime'
+    lean: FourierTreeRIP.fourier_tree_rip_quadratic
+    module: Solution
+    status: proved
+    note: Uses N >= k*2^k, stronger than source ambient-size assumption.
+  - source: Full DFT Parseval check
+    lean: FourierTreeRIP.full_dft_isometry
+    module: Solution
+    status: proved
+    note: Sanity check on the Fourier measurement normalization.
+  - source: Full DFT tree-RIP nonvacuity
+    lean: FourierTreeRIP.treeRIP_full_dft
+    module: Solution
+    status: proved
+    note: Full DFT satisfies tree-RIP with distortion zero.
+acknowledgements: Lean 4 and Mathlib; Claude (Anthropic) for AI-assisted proof generation; OpenAI
+  GPT-6 for source-level inspection and Palomar repository packaging.

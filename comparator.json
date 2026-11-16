@@ -1,0 +1,12 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "FourierTreeRIP.broom_lower_bound",
+    "FourierTreeRIP.fourier_tree_rip_lower_bound",
+    "FourierTreeRIP.fourier_tree_rip_quadratic",
+    "FourierTreeRIP.full_dft_isometry",
+    "FourierTreeRIP.treeRIP_full_dft"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"]
+}
