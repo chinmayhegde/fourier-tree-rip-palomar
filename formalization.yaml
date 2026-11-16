@@ -98,6 +98,7 @@ fidelity:
 review:
   status: AI-assisted source-level audit; machine-checked by Comparator
   reviewers:
+  - Chinmay Hegde (author; human review)
   - OpenAI GPT-6 (source-level review; not independent Lean execution)
   notes: The module-system sources were rebuilt and accepted by lake comparator --paranoid (Lean
     kernel, lean4lean, nanoda, con-leche, con-ron) by the formalizing agent, outside GitHub Actions.
