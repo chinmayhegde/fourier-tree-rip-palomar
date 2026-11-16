@@ -2,7 +2,7 @@ module
 
 public import TreeRIP.Broom
 
-public section
+@[expose] public section
 
 /-! # Sanity check on the definitions: the full DFT is an isometry (Parseval) -/
 

@@ -3,7 +3,7 @@ module
 public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 public import Mathlib.Analysis.SpecialFunctions.Log.Base
 
-public section
+@[expose] public section
 
 /-!
 # Fourier tree-RIP: definitions

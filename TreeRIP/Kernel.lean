@@ -2,7 +2,7 @@ module
 
 public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 
-public section
+@[expose] public section
 
 /-! # The Dirichlet/Fejér kernel on the DFT grid: main-lobe count and tail mass -/
 

@@ -2,7 +2,7 @@ module
 
 public import TreeRIP.Defs
 
-public section
+@[expose] public section
 
 /-! # The broom ("stem plus bush") tree -/
 

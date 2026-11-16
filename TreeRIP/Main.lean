@@ -2,7 +2,7 @@ module
 
 public import TreeRIP.Count
 
-public section
+@[expose] public section
 
 /-! # Theorem 1 and Corollary 3 -/
 
