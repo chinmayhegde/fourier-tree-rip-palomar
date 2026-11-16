@@ -4,15 +4,15 @@ This repository contains a Lean 4 formalization of a lower bound for partial Fou
 
 ## Result
 
-Consider an \(N \times N\) discrete Fourier transform, with \(m\) rows sampled independently and uniformly **with replacement**, normalized by \(1/\sqrt{m}\). The main theorem shows that, for \(m > 0\), if
+Consider an $N \times N$ discrete Fourier transform, with $m$ rows sampled independently and uniformly **with replacement**, normalized by $1/\sqrt{m}$. The main theorem shows that, for $m > 0$, if
 
-\[
-20000\,m \leq k\min\!\left\{k,\log_2(N/k)\right\},
-\]
+```math
+20000 m \leq k\min\left\lbrace k,\log_2(N/k)\right\rbrace,
+```
 
-then **at least half** of all ordered frequency samples fail tree-restricted isometry of order \(k\) with distortion \(1/4\).
+then **at least half** of all ordered frequency samples fail tree-restricted isometry of order $k$ with distortion $1/4$.
 
-In particular, when \(N \geq k2^k\) and \(20000\,m \leq k^2\), tree-RIP fails with probability at least \(1/2\). Thus, in this ambient-dimension regime, uniformly subsampled Fourier measurements face a quadratic \(\Omega(k^2)\) obstruction, in contrast to the linear measurement complexity possible with Gaussian matrices for tree-sparse signals.
+In particular, when $N \geq k2^k$ and $20000 m \leq k^2$, tree-RIP fails with probability at least $1/2$. Thus, in this ambient-dimension regime, uniformly subsampled Fourier measurements face a quadratic $\Omega(k^2)$ obstruction, in contrast to the linear measurement complexity possible with Gaussian matrices for tree-sparse signals.
 
 The proof constructs *broom* (stem-plus-bush) tree supports and combines Fejér-kernel estimates, simultaneous Diophantine approximation, and finite counting. It also formalizes full-DFT Parseval as a consistency check.
 
