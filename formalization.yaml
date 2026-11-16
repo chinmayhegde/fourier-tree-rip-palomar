@@ -96,13 +96,12 @@ fidelity:
     Lean corollary, which assumes N >= k 2^k; the main Lean theorem still states the more general
     bound. Additional discussion and variants listed in status.scope are not formalized.
 review:
-  status: AI-assisted source-level audit; machine-checked by Comparator; no human peer review
+  status: AI-assisted source-level audit; machine-checked by Comparator
   reviewers:
   - OpenAI GPT-6 (source-level review; not independent Lean execution)
   notes: The module-system sources were rebuilt and accepted by lake comparator --paranoid (Lean
     kernel, lean4lean, nanoda, con-leche, con-ron) by the formalizing agent, outside GitHub Actions.
-    Palomar's own verification is the independent check of the submitted commit. No claim of human
-    peer review.
+    Palomar's own verification is the independent check of the submitted commit.
 alignment:
   namespace: FourierTreeRIP
   statements:
