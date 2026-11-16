@@ -25,4 +25,4 @@ The proof constructs *broom* (stem-plus-bush) tree supports and combines Fejér-
 - [`formalization.yaml`](formalization.yaml) — formalization metadata and correspondence with the note.
 - [`comparator.json`](comparator.json) — declarations checked by Comparator.
 - [`lakefile.toml`](lakefile.toml), [`lean-toolchain`](lean-toolchain), and [`lake-manifest.json`](lake-manifest.json) — pinned Lean and Mathlib configuration.
-- [`scripts/`](scripts/) and [`.github/workflows/ci.yml`](.github/workflows/ci.yml) — source checks and automated build/Comparator checks.
+- [`scripts/`](scripts/) — source-policy, metadata, and Comparator check scripts.
