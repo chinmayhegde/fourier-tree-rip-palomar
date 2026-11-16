@@ -3,7 +3,7 @@ module
 public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 public import Mathlib.Analysis.SpecialFunctions.Log.Base
 
-public section
+@[expose] public section
 
 /-!
 # A quadratic lower bound for Fourier RIP with tree-structured sparsity

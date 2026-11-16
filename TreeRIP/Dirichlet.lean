@@ -3,7 +3,7 @@ module
 public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Bounds
 public import Mathlib.Data.Fintype.Pigeonhole
 
-public section
+@[expose] public section
 
 /-! # Simultaneous Dirichlet approximation (circle form, `Q = 16`) -/
 

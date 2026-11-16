@@ -2,7 +2,7 @@ module
 
 public import TreeRIP.Broom
 
-public section
+@[expose] public section
 
 /-! # Counting over all `N ^ m` frequency tuples: Proposition 2 -/
 

@@ -13,6 +13,8 @@ project:
   license: Apache-2.0
   responsible_maintainers:
   - Chinmay Hegde
+repository:
+  role: substantive-development
 classification:
   arxiv:
   - math.NA
@@ -76,16 +78,17 @@ automation:
   methods:
   - method: agent
     models:
-    - Claude (Anthropic; exact version not recorded)
+    - Claude Fable 5.2 (Anthropic)
     tool_setup: AI-assisted Lean formalization by Claude using Mathlib and the Lean prover; the original
       mathematical argument was developed with human research involvement. Exact prompting and execution
       tooling not recorded.
     prompting_notes: The agent was tasked with formalizing the supplied Fourier tree-RIP broom proof
       and passing Comparator. Prompt transcript not preserved here.
   spend_usd: not tracked
-  notes: A Claude coding agent produced the Lean proof, which the owner reported passing Comparator.
-    GPT-6 performed a source-level audit and subsequently prepared Palomar packaging. No independent
-    Lean run or Comparator rerun of this module-system port has been completed as part of the packaging.
+  notes: A Claude coding agent produced the Lean proof and ran Comparator on it. GPT-6 performed a
+    source-level audit and prepared the Palomar packaging, including the port to the Lean module
+    system. The Claude agent then repaired the port (definitions are exposed with @[expose]) and
+    reran lake build and lake comparator --paranoid on the ported sources; both passed.
 fidelity:
   divergences: The source states an asymptotic failure-probability theorem. The Lean theorem makes
     the constants explicit and counts successes among all N^m sampled-frequency tuples (failure probability
@@ -93,13 +96,12 @@ fidelity:
     Lean corollary, which assumes N >= k 2^k; the main Lean theorem still states the more general
     bound. Additional discussion and variants listed in status.scope are not formalized.
 review:
-  status: AI-assisted source-level audit; independent CI verification pending
+  status: AI-assisted source-level audit; machine-checked by Comparator
   reviewers:
   - OpenAI GPT-6 (source-level review; not independent Lean execution)
-  notes: The original proof was reported by the owner as passing Comparator before conversion to the
-    Lean module system. Formal semantic verification of this repackaged commit must be established
-    by its GitHub Actions build and Palomar's own Comparator verification. No claim of human peer
-    review.
+  notes: The module-system sources were rebuilt and accepted by lake comparator --paranoid (Lean
+    kernel, lean4lean, nanoda, con-leche, con-ron) by the formalizing agent, outside GitHub Actions.
+    Palomar's own verification is the independent check of the submitted commit.
 alignment:
   namespace: FourierTreeRIP
   statements:

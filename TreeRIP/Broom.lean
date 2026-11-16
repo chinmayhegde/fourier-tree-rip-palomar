@@ -5,7 +5,7 @@ public import TreeRIP.Kernel
 public import TreeRIP.Tree
 public import TreeRIP.Dirichlet
 
-public section
+@[expose] public section
 
 /-! # Deterministic core: few main-lobe samples + small tail mass ⇒ tree-RIP fails -/
 
